@@ -1,5 +1,5 @@
 import React, { lazy, ReactElement, Suspense, useCallback } from "react";
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
 export interface IDynamicRoutesProps {
   Loading: ReactElement;
@@ -9,8 +9,8 @@ const DynamicPage = (props: IDynamicRoutesProps) => {
   const { pathname } = useLocation();
   const Page = lazy(async () => {
     try {
-      if (pathname === "") {
-        return await import("./pages/index");
+      if (pathname === "/") {
+        return await import("./pages/main");
       }
 
       return await import(`./pages${pathname}`);
@@ -39,10 +39,8 @@ export const DynamicRoutes = (props: IDynamicRoutesProps) => {
   ]);
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" render={render} />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route path="/" render={render} />
+    </Switch>
   );
 };

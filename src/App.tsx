@@ -1,14 +1,25 @@
 import React from "react";
+import { BrowserRouter, Link } from "react-router-dom";
 import "./App.css";
 import { DynamicRoutes } from "./DynamicRoutes";
 
-const Loading = () => <div>로딩</div>;
+const Loading = () => <div>페이지 로딩중...</div>;
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <DynamicRoutes Loading={<Loading />} />
+        <BrowserRouter>
+          <ul>
+            <li>
+              <Link to="/">메인페이지로</Link>
+            </li>
+            <li>
+              <Link to="/sub">서브페이지로</Link>
+            </li>
+          </ul>
+          <DynamicRoutes Loading={<Loading />} />
+        </BrowserRouter>
       </header>
     </div>
   );

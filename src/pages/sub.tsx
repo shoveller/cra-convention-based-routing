@@ -1,5 +1,7 @@
 import React from "react";
 
-export default () => {
+const SubPage = () => {
   return <div>서브</div>;
 };
+
+export default SubPage
