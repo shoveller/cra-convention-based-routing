@@ -1,9 +1,14 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 import { BrowserRouter, Link } from "react-router-dom";
 import "./App.css";
 import { DynamicRoutes } from "./DynamicRoutes";
 
-const Loading = () => <div>페이지 로딩중...</div>;
+const Loading = () => (
+  <div>
+    <Skeleton width={50} />
+  </div>
+);
 
 function App() {
   return (
